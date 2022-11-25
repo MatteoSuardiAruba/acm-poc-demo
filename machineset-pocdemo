@@ -1,0 +1,51 @@
+apiVersion: machine.openshift.io/v1beta1
+kind: MachineSet
+metadata:
+  annotations:
+    machine.openshift.io/memoryMb: '16384'
+    machine.openshift.io/vCPU: '4'
+  name: cls01-v6q64-worker
+  namespace: openshift-machine-api
+  labels:
+    machine.openshift.io/cluster-api-cluster: cls01-v6q64
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      machine.openshift.io/cluster-api-cluster: cls01-v6q64
+      machine.openshift.io/cluster-api-machineset: cls01-v6q64-worker
+  template:
+    metadata:
+      labels:
+        machine.openshift.io/cluster-api-cluster: cls01-v6q64
+        machine.openshift.io/cluster-api-machine-role: worker
+        machine.openshift.io/cluster-api-machine-type: worker
+        machine.openshift.io/cluster-api-machineset: cls01-v6q64-worker
+    spec:
+      lifecycleHooks: {}
+      metadata: {}
+      providerSpec:
+        value:
+          numCoresPerSocket: 4
+          diskGiB: 120
+          snapshot: ''
+          userDataSecret:
+            name: worker-user-data
+          memoryMiB: 16384
+          credentialsSecret:
+            name: vsphere-cloud-credentials
+          network:
+            devices:
+              - networkName: MGMT_OCP
+          metadata:
+            creationTimestamp: null
+          numCPUs: 4
+          kind: VSphereMachineProviderSpec
+          workspace:
+            datacenter: IT1
+            datastore: DATASTORE01
+            folder: /IT1/vm/cls01-v6q64
+            resourcePool: /IT1/host/OCP/Resources
+            server: ipit1-rhovcr01.poc.local
+          template: cls01-v6q64-rhcos
+          apiVersion: machine.openshift.io/v1beta1
