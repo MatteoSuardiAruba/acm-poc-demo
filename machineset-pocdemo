@@ -4,23 +4,24 @@ metadata:
   annotations:
     machine.openshift.io/memoryMb: '16384'
     machine.openshift.io/vCPU: '4'
-  name: cls01-v6q64-worker
+  name: cls02-jmt7t-worker
+  generation: 1
   namespace: openshift-machine-api
   labels:
-    machine.openshift.io/cluster-api-cluster: cls01-v6q64
+    machine.openshift.io/cluster-api-cluster: cls02-jmt7t
 spec:
   replicas: 3
   selector:
     matchLabels:
-      machine.openshift.io/cluster-api-cluster: cls01-v6q64
-      machine.openshift.io/cluster-api-machineset: cls01-v6q64-worker
+      machine.openshift.io/cluster-api-cluster: cls02-jmt7t
+      machine.openshift.io/cluster-api-machineset: cls02-jmt7t-worker
   template:
     metadata:
       labels:
-        machine.openshift.io/cluster-api-cluster: cls01-v6q64
+        machine.openshift.io/cluster-api-cluster: cls02-jmt7t
         machine.openshift.io/cluster-api-machine-role: worker
         machine.openshift.io/cluster-api-machine-type: worker
-        machine.openshift.io/cluster-api-machineset: cls01-v6q64-worker
+        machine.openshift.io/cluster-api-machineset: cls02-jmt7t-worker
     spec:
       lifecycleHooks: {}
       metadata: {}
@@ -44,8 +45,8 @@ spec:
           workspace:
             datacenter: IT1
             datastore: DATASTORE01
-            folder: /IT1/vm/cls01-v6q64
+            folder: /IT1/vm/cls02-jmt7t
             resourcePool: /IT1/host/OCP/Resources
             server: ipit1-rhovcr01.poc.local
-          template: cls01-v6q64-rhcos
+          template: cls02-jmt7t-rhcos
           apiVersion: machine.openshift.io/v1beta1
