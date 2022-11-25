@@ -10,7 +10,7 @@ metadata:
   labels:
     machine.openshift.io/cluster-api-cluster: cls02-jmt7t
 spec:
-  replicas: 3
+  replicas: 2
   selector:
     matchLabels:
       machine.openshift.io/cluster-api-cluster: cls02-jmt7t
