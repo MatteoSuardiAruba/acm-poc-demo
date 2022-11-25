@@ -4,24 +4,24 @@ metadata:
   annotations:
     machine.openshift.io/memoryMb: '16384'
     machine.openshift.io/vCPU: '4'
-  name: cls02-jmt7t-worker
+  name: cls02-jmt7t-infra
   generation: 1
   namespace: openshift-machine-api
   labels:
     machine.openshift.io/cluster-api-cluster: cls02-jmt7t
 spec:
-  replicas: 2
+  replicas: 0
   selector:
     matchLabels:
       machine.openshift.io/cluster-api-cluster: cls02-jmt7t
-      machine.openshift.io/cluster-api-machineset: cls02-jmt7t-worker
+      machine.openshift.io/cluster-api-machineset: cls02-jmt7t-infra
   template:
     metadata:
       labels:
         machine.openshift.io/cluster-api-cluster: cls02-jmt7t
-        machine.openshift.io/cluster-api-machine-role: worker
-        machine.openshift.io/cluster-api-machine-type: worker
-        machine.openshift.io/cluster-api-machineset: cls02-jmt7t-worker
+        machine.openshift.io/cluster-api-machine-role: infra
+        machine.openshift.io/cluster-api-machine-type: infra
+        machine.openshift.io/cluster-api-machineset: cls02-jmt7t-infra
     spec:
       lifecycleHooks: {}
       metadata: {}
